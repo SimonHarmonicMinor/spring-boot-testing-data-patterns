@@ -21,9 +21,11 @@ public class User {
   private String login;
 
   @NotNull
+  @Column(name = "first_name")
   private String firstName;
 
   @NotNull
+  @Column(name = "last_name")
   private String lastName;
 
   public Long getId() {

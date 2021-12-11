@@ -7,7 +7,6 @@ import com.sun.istack.NotNull;
 import java.time.OffsetDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
