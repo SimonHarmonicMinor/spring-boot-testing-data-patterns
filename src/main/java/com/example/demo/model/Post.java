@@ -36,6 +36,9 @@ public class Post {
   @NotNull
   private String content;
 
+  @NotNull
+  private double rating;
+
   @OneToMany(fetch = LAZY, mappedBy = "post")
   @NotNull
   private List<Comment> comments = new ArrayList<>();
@@ -107,6 +110,14 @@ public class Post {
 
   public void setCreatedAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
+  }
+
+  public double getRating() {
+    return rating;
+  }
+
+  public void setRating(double rating) {
+    this.rating = rating;
   }
 
   @Override
