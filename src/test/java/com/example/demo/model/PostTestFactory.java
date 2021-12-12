@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import java.time.OffsetDateTime;
+
 public class PostTestFactory {
   public static Post createPost(User author) {
     return createPost("name", "content", 0, author);
@@ -19,6 +21,7 @@ public class PostTestFactory {
     post.setContent(content);
     post.setRating(rating);
     post.setAuthor(author);
+    post.setCreatedAt(OffsetDateTime.now());
     return post;
   }
 }
