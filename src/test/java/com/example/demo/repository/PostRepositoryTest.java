@@ -9,12 +9,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class PostRepositoryTest extends AbstractIntegrationTest {
-
   @Autowired
   private PostRepository postRepository;
+  @Autowired
+  private CommentRepository commentRepository;
+  @Autowired
+  private TagRepository tagRepository;
 
   @Test
   void test() {
-    assertEquals(0, postRepository.count());
+
   }
 }
