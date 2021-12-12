@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -9,6 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,7 +42,7 @@ public class Post {
   @NotNull
   private double rating;
 
-  @OneToMany(fetch = LAZY, mappedBy = "post")
+  @OneToMany(fetch = LAZY, mappedBy = "post", cascade = {PERSIST, MERGE})
   @NotNull
   private List<Comment> comments = new ArrayList<>();
 
