@@ -4,5 +4,5 @@ import com.example.demo.repository.query.PostView;
 import java.util.List;
 
 public interface CustomPostRepository {
-  List<PostView> findTopPostsWithLatestComments(int maxPostsCount);
+  List<PostView> findTopPosts(int maxPostsCount);
 }

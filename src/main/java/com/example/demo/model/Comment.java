@@ -74,4 +74,11 @@ public class Comment {
   public void setPost(Post post) {
     this.post = post;
   }
+
+  public Comment(User author, String text, OffsetDateTime createdAt, Post post) {
+    this.author = author;
+    this.text = text;
+    this.createdAt = createdAt;
+    this.post = post;
+  }
 }

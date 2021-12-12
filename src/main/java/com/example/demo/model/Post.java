@@ -136,4 +136,13 @@ public class Post {
   public int hashCode() {
     return 2022;
   }
+
+  public Post(String name, String content, double rating, User author,
+      OffsetDateTime createdAt) {
+    this.name = name;
+    this.content = content;
+    this.rating = rating;
+    this.author = author;
+    this.createdAt = createdAt;
+  }
 }

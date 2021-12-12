@@ -56,4 +56,10 @@ public class User {
   public void setLastName(String lastName) {
     this.lastName = lastName;
   }
+
+  public User(String login, String firstName, String lastName) {
+    this.login = login;
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
 }

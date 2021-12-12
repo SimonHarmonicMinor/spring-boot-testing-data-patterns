@@ -72,4 +72,8 @@ public class Tag {
   public int hashCode() {
     return 2022;
   }
+
+  public Tag(String name) {
+    this.name = name;
+  }
 }
