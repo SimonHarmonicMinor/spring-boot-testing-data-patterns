@@ -33,7 +33,7 @@ class PostRepositoryTestObjectMother extends AbstractIntegrationTest {
     final var user = userRepository.save(createUser("login"));
     for (int i = 0; i < 10; i++) {
       final var post = postRepository.save(
-          createPost("name" + i, "content", i, user)
+          createPost(i, user)
       );
       commentRepository.saveAll(
           List.of(

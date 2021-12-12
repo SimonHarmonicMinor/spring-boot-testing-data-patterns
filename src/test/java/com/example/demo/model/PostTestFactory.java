@@ -7,6 +7,10 @@ public class PostTestFactory {
     return createPost("name", "content", 0, author);
   }
 
+  public static Post createPost(double rating, User author) {
+    return createPost("name", "content", rating, author);
+  }
+
   public static Post createPost(String name, User author) {
     return createPost(name, "content", 0, author);
   }
