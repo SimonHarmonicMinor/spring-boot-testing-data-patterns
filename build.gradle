@@ -24,6 +24,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.testcontainers:junit-jupiter'
 	testImplementation 'org.testcontainers:postgresql'
+	testImplementation 'org.hamcrest:hamcrest-all:1.3'
 }
 
 dependencyManagement {
