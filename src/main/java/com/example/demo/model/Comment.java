@@ -81,4 +81,8 @@ public class Comment {
     this.createdAt = createdAt;
     this.post = post;
   }
+
+  public Comment() {
+
+  }
 }

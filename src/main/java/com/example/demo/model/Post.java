@@ -145,4 +145,7 @@ public class Post {
     this.author = author;
     this.createdAt = createdAt;
   }
+
+  public Post() {
+  }
 }

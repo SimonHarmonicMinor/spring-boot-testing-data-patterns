@@ -3,7 +3,7 @@ package com.example.demo.repository;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.example.demo.AbstractIntegrationTest;
+import com.example.demo.test_util.AbstractIntegrationTest;
 import com.example.demo.model.Comment;
 import com.example.demo.model.Post;
 import com.example.demo.model.User;
@@ -16,14 +16,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class PostRepositoryTest extends AbstractIntegrationTest {
+
   @Autowired
   private PostRepository postRepository;
   @Autowired
   private CommentRepository commentRepository;
   @Autowired
   private UserRepository userRepository;
-  @Autowired
-  private TagRepository tagRepository;
 
   @Test
   @DisplayName("Should return top 3 posts")
