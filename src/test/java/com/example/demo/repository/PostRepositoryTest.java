@@ -1,14 +1,18 @@
 package com.example.demo.repository;
 
+import static java.util.Comparator.comparing;
+import static java.util.Comparator.reverseOrder;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.example.demo.test_util.AbstractIntegrationTest;
 import com.example.demo.model.Comment;
 import com.example.demo.model.Post;
 import com.example.demo.model.User;
+import com.example.demo.repository.query.PostView;
+import com.example.demo.test_util.AbstractIntegrationTest;
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +20,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class PostRepositoryTest extends AbstractIntegrationTest {
-
   @Autowired
   private PostRepository postRepository;
   @Autowired
@@ -43,6 +46,13 @@ class PostRepositoryTest extends AbstractIntegrationTest {
     final var res = postRepository.findTopPosts(3);
 
     assertEquals(3, res.size(), "Unexpected posts count");
+    assertEquals(
+        res,
+        res.stream()
+            .sorted(comparing(PostView::rating, reverseOrder()))
+            .collect(Collectors.toList()),
+        "Posts should be sorted in by rating in descending order"
+    );
     assertTrue(
         res.stream()
             .allMatch(post -> post.comments().size() == 2),

@@ -30,7 +30,7 @@ class CustomPostRepositoryImpl implements CustomPostRepository {
                    SELECT p.id AS postId, p.name AS postName, p.rating AS rating, a.login AS login
                     FROM Post p
                     INNER JOIN p.author as a
-                    ORDER BY rating
+                    ORDER BY rating DESC
                 """,
             Tuple.class
         ).setMaxResults(maxPostsCount)
