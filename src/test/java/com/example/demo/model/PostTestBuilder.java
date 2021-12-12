@@ -95,6 +95,7 @@ public class PostTestBuilder implements Builder<Post> {
     post.setComments(
         comments.stream()
             .map(Builder::build)
+            .peek(c -> c.setPost(post))
             .collect(toList())
     );
     post.setAuthor(author.build());
@@ -102,6 +103,7 @@ public class PostTestBuilder implements Builder<Post> {
     post.setTags(
         tags.stream()
             .map(Builder::build)
+            .peek(t -> t.getPosts().add(post))
             .collect(toSet())
     );
     return post;

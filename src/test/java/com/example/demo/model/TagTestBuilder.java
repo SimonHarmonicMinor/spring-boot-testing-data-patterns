@@ -45,6 +45,7 @@ public class TagTestBuilder implements Builder<Tag> {
     tag.setPosts(
         posts.stream()
             .map(Builder::build)
+            .peek(p -> p.getTags().add(tag))
             .collect(toSet())
     );
     return tag;

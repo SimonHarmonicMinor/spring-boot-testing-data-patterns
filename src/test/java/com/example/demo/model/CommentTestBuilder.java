@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import static java.util.Optional.ofNullable;
+
 import com.example.demo.test_util.Builder;
 import java.time.OffsetDateTime;
 
@@ -52,9 +54,17 @@ public class CommentTestBuilder implements Builder<Comment> {
   public Comment build() {
     final var comment = new Comment();
     comment.setText(text);
-    comment.setAuthor(author.build());
+    comment.setAuthor(
+        ofNullable(author)
+            .map(Builder::build)
+            .orElse(null)
+    );
     comment.setCreatedAt(createdAt);
-    comment.setPost(post.build());
+    comment.setPost(
+        ofNullable(post)
+            .map(Builder::build)
+            .orElse(null)
+    );
     return comment;
   }
 }
