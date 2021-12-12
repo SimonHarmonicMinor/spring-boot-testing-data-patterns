@@ -34,6 +34,11 @@ public class Comment {
   @NotNull
   private OffsetDateTime createdAt;
 
+  @ManyToOne(fetch = LAZY)
+  @JoinColumn(name = "post_id")
+  @NotNull
+  private Post post;
+
   public Long getId() {
     return id;
   }
@@ -60,5 +65,13 @@ public class Comment {
 
   public void setCreatedAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
+  }
+
+  public Post getPost() {
+    return post;
+  }
+
+  public void setPost(Post post) {
+    this.post = post;
   }
 }

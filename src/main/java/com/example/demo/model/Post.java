@@ -52,7 +52,7 @@ public class Post {
   @NotNull
   private OffsetDateTime createdAt;
 
-  @ManyToMany(fetch = LAZY, mappedBy = "posts")
+  @ManyToMany(fetch = LAZY)
   @JoinTable(
       name = "post_tag",
       joinColumns = @JoinColumn(name = "post_id"),
