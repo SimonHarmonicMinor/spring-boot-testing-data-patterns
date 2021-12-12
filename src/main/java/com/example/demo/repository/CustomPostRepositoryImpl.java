@@ -14,8 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional(readOnly = true)
-class CustomPostRepositoryImpl implements
-    CustomPostRepository {
+class CustomPostRepositoryImpl implements CustomPostRepository {
 
   @PersistenceContext
   private EntityManager em;
@@ -24,11 +23,12 @@ class CustomPostRepositoryImpl implements
   public List<PostView> findTopPostsWithLatestComments(int maxPostsCount) {
     final var rows = em.createQuery(
             """
-                   SELECT p.id AS postId, p.name AS postName, p.rating AS rating, p.author.login AS login,
+                   SELECT p.id AS postId, p.name AS postName, p.rating AS rating, a.login AS login,
                     c.id AS commentId, c.text AS text, c.createdAt AS createdAt
                     FROM Post p
+                    INNER JOIN p.author as a
                     LEFT JOIN p.comments as c
-                    ORDER BY rating
+                    ORDER BY rating, createdAt
                 """,
             Tuple.class
         ).setMaxResults(maxPostsCount)
