@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toSet;
 
 import com.example.demo.test_util.Builder;
 import java.time.OffsetDateTime;
@@ -17,7 +16,6 @@ public class PostTestBuilder implements Builder<Post> {
   private List<Builder<Comment>> comments = new ArrayList<>();
   private Builder<User> author;
   private OffsetDateTime createdAt = OffsetDateTime.now();
-  private List<Builder<Tag>> tags = new ArrayList<>();
 
   public static PostTestBuilder aPost() {
     return new PostTestBuilder();
@@ -30,7 +28,6 @@ public class PostTestBuilder implements Builder<Post> {
     this.comments = new ArrayList<>(builder.comments);
     this.author = builder.author;
     this.createdAt = builder.createdAt;
-    this.tags = new ArrayList<>(builder.tags);
   }
 
   private PostTestBuilder() {
@@ -76,16 +73,6 @@ public class PostTestBuilder implements Builder<Post> {
     return copy;
   }
 
-  public PostTestBuilder withTag(Builder<Tag> tag) {
-    return withTags(List.of(tag));
-  }
-
-  public PostTestBuilder withTags(Collection<? extends Builder<Tag>> tags) {
-    final var copy = new PostTestBuilder(this);
-    copy.tags = new ArrayList<>(tags);
-    return copy;
-  }
-
   @Override
   public Post build() {
     final var post = new Post();
@@ -100,12 +87,6 @@ public class PostTestBuilder implements Builder<Post> {
     );
     post.setAuthor(author.build());
     post.setCreatedAt(createdAt);
-    post.setTags(
-        tags.stream()
-            .map(Builder::build)
-            .peek(t -> t.getPosts().add(post))
-            .collect(toSet())
-    );
     return post;
   }
 }

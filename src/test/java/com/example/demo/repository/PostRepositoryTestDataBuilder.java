@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @DBTest
 class PostRepositoryTestDataBuilder extends AbstractIntegrationTest {
+
   @Autowired
   private PostRepository postRepository;
   @Autowired

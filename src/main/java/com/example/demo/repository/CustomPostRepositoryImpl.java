@@ -4,10 +4,8 @@ import static java.util.Collections.emptyList;
 
 import com.example.demo.repository.query.CommentView;
 import com.example.demo.repository.query.PostView;
-import com.example.demo.repository.query.TagView;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -45,32 +43,8 @@ class CustomPostRepositoryImpl implements CustomPostRepository {
           row.get("postName", String.class),
           row.get("rating", Double.class),
           row.get("login", String.class),
-          new ArrayList<>(),
-          new HashSet<>()
+          new ArrayList<>()
       ));
-    }
-
-    final List<Tuple> tags = res.isEmpty()
-        ? emptyList()
-        : em.createQuery(
-                """
-                    SELECT p.id AS postId, t.id AS tagId, t.name AS tagName
-                    FROM Post p
-                    LEFT JOIN p.tags t
-                    WHERE p.id in (:postIds)
-                    """,
-                Tuple.class
-            ).setParameter("postIds", res.keySet())
-            .getResultList();
-
-    for (Tuple row : tags) {
-      final var postId = row.get("postId", Long.class);
-      res.get(postId)
-          .tags()
-          .add(new TagView(
-              row.get("tagId", Long.class),
-              row.get("tagName", String.class)
-          ));
     }
 
     final List<Tuple> comments =

@@ -1,5 +1,0 @@
-CREATE TABLE tag
-(
-    tag_id BIGSERIAL PRIMARY KEY,
-    name   TEXT NOT NULL
-);
