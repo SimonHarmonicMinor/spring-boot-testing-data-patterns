@@ -1,7 +1,7 @@
 # Spring Boot + JPA — Clear Tests
 An examples of creating test records in the database with Spring Boot + Spring Data + JPA usage.
 
-Check out the article to get more information.
+Check out [the article](https://dev.to/kirekov/spring-boot-jpa-clear-tests-45he) to get more information.
 
 ## Topics
 
